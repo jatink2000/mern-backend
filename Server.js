@@ -285,12 +285,7 @@ app.post("/deleteproduct", async (req, res) => {
 })
 
 
-app.get("/", async (req, res) => {
-        res.json({
-            status: true,
-            "msg": "Active"
-        })
-})
+
 
 
 
@@ -300,4 +295,11 @@ app.get("/", async (req, res) => {
 app.post("/updateproduct", async (req, res) => {
     let updateproduct = await products.findByIdAndUpdate({ _id: req.body.product._id }, { $set: { "productname": req.body.product.productname, "productprice": req.body.product.productprice } })
 
+})
+
+app.get("/", async (req, res) => {
+    res.json({
+        status: true,
+        "msg": "Active"
+    })
 })
