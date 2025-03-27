@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({}))
 // mongoose -----------------------
 const { mongoose } = require("mongoose")
 
-mongoose.connect("mongodb://localhost:27017/mern").then(() => {
+mongoose.connect("mongodb+srv://jk0060701:YNGaddqw8kbBqixG@cluster0.jrxe8v9.mongodb.net/mern3").then(() => {
     console.log("mongodb connect")
 }).catch((err) => {
     console.log(err)
@@ -256,30 +256,30 @@ app.post("/admin", async (req, res) => {
             status: true,
             msg: "admin login"
         })
-    }       
-    else{
+    }
+    else {
         res.json({
-            status:false,
-            msg:"failed to admin login"
+            status: false,
+            msg: "failed to admin login"
         })
     }
 })
 
 
 // deleteproduct ----------------
-app.post("/deleteproduct",async(req,res)=>{
-    let deletedata=await products.deleteOne({_id:req.body.item._id})
+app.post("/deleteproduct", async (req, res) => {
+    let deletedata = await products.deleteOne({ _id: req.body.item._id })
 
-    if(deletedata){
+    if (deletedata) {
         res.json({
-            status:true,
-            "msg":"delete product"
+            status: true,
+            "msg": "delete product"
         })
     }
-    else{
+    else {
         res.json({
-            status:false,
-            "msg":"failed to delete product"
+            status: false,
+            "msg": "failed to delete product"
         })
     }
 })
@@ -288,7 +288,7 @@ app.post("/deleteproduct",async(req,res)=>{
 
 // updateproduct------------
 
-app.post("/updateproduct",async(req,res)=>{
-    let updateproduct=await products.findByIdAndUpdate({_id:req.body.product._id},{$set:{"productname":req.body.product.productname,"productprice":req.body.product.productprice}})
+app.post("/updateproduct", async (req, res) => {
+    let updateproduct = await products.findByIdAndUpdate({ _id: req.body.product._id }, { $set: { "productname": req.body.product.productname, "productprice": req.body.product.productprice } })
 
 })
