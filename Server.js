@@ -285,6 +285,15 @@ app.post("/deleteproduct", async (req, res) => {
 })
 
 
+app.post("/", async (req, res) => {
+        res.json({
+            status: true,
+            "msg": "Active"
+        })
+})
+
+
+
 
 // updateproduct------------
 
